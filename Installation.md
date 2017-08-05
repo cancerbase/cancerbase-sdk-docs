@@ -6,7 +6,7 @@ API.  We also provide REST API access to data, secured with OAuth2.
 
 In your react-native project's main folder, run:
 
-    yarn install cancerbase-sdk
+    yarn add cancerbase-sdk
 
 When a new SDK version is released, you can upgrade `cancerbase-sdk` by
 running:
