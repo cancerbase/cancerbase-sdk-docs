@@ -125,7 +125,7 @@ You can check the user’s login status two ways:
   2. Asynchronous
 
      ```typescript
-     CancerBaseSDK.getLoginStatus() → Promise<status : string>
+     CancerBaseSDK.getAuthStatus() → Promise<status : string>
      ```
 
      The asynchronous method verifies that the current OAuth access token is still valid.
