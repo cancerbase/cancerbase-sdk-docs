@@ -114,21 +114,21 @@ You can check the user’s login status two ways:
 
   1. Synchronous
 
-  ```javascript
-  CancerBaseSDK.isLoggedIn() → true/false
-  ```
+     ```javascript
+     CancerBaseSDK.isLoggedIn() → true/false
+     ```
 
-    The synchronous method is not guaranteed to be accurate, but it is very
-    likely accurate unless the user signs out of your app from cancerbase.org
-    (not currently possible).
+     The synchronous method is not guaranteed to be accurate, but it is very
+     likely accurate unless the user signs out of your app from cancerbase.org
+     (not currently possible).
 
   2. Asynchronous
 
-  ```typescript
-  CancerBaseSDK.getLoginStatus() → Promise<status : string>
-  ```
+     ```typescript
+     CancerBaseSDK.getLoginStatus() → Promise<status : string>
+     ```
 
-    The asynchronous method verifies that the current OAuth access token is still valid.
+     The asynchronous method verifies that the current OAuth access token is still valid.
 
 Generally, you can use the synchronous version.
 
