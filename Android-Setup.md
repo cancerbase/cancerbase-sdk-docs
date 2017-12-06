@@ -10,10 +10,10 @@
 
     Open your application's `android/app/build.gradle` file.  You should see something like:
 
-    ```gradle
+    ```groovy
     android {
         compileSdkVersion 25
-        buildToolsVersion '25.0.2'
+        buildToolsVersion '27.0.1'
 
         defaultConfig {
             applicationId "com.example"
@@ -30,10 +30,13 @@
     ```
     Inside the `defaultConfig` block, add your CancerBase application id prefixed with `cb` as shown below:
 
+    ```groovy
             manifestPlaceholders = [
-                'appAuthRedirectScheme': 'cbAPPLICATION_ID_HERE'
+                "appAuthRedirectScheme": "cbAPPLICATION_ID"
             ]
-
+            resValue "string", "CANCERBASE_CLIENT_ID", "APPLICATION_ID"
+     ```
+     
      For example, if your application id was `123456`, your `app/build.gradle` would now look like:
 
     ```gradle
@@ -51,8 +54,9 @@
                 abiFilters "armeabi-v7a", "x86"
             }
             manifestPlaceholders = [
-                'appAuthRedirectScheme': 'cb123456'
+                "appAuthRedirectScheme": "cb123456"
             ]
+            resValue "string", "CANCERBASE_CLIENT_ID", "123456"
         }
         ...
     }
