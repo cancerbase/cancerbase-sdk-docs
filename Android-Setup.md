@@ -13,7 +13,7 @@
     ```groovy
     android {
         compileSdkVersion 25
-        buildToolsVersion '27.0.1'
+        buildToolsVersion "27.0.1"
 
         defaultConfig {
             applicationId "com.example"
@@ -28,21 +28,21 @@
         ...
     }
     ```
-    Inside the `defaultConfig` block, add your CancerBase application id prefixed with `cb` as shown below:
+    Inside the `defaultConfig` block, add the following lines, replacing `{CLIENT_ID}` with your CancerBase client id:
 
     ```groovy
             manifestPlaceholders = [
-                "appAuthRedirectScheme": "cbAPPLICATION_ID"
+                "appAuthRedirectScheme": "cb{CLIENT_ID}"
             ]
-            resValue "string", "CANCERBASE_CLIENT_ID", "APPLICATION_ID"
+            resValue "string", "CANCERBASE_CLIENT_ID", "{CLIENT_ID}"
      ```
      
-     For example, if your application id was `123456`, your `app/build.gradle` would now look like:
+     For example, if your client id was `123456`, your `app/build.gradle` would now look like:
 
     ```gradle
     android {
         compileSdkVersion 25
-        buildToolsVersion '25.0.2'
+        buildToolsVersion "27.0.1"
 
         defaultConfig {
             applicationId "com.example"
