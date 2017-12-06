@@ -56,3 +56,7 @@ The project directory is the android folder inside the cancerbase-sdk.
 ## iOS Configuration
 
 To build iOS from source, if you've already linked your project with `libCancerBaseSDK.a`, remove this file from your project. Then you can add the CancerBaseSDK.xcodeproj to your project (or to your workspace if you have one) and link to the `libCancerBaseSDK.a` that this project generates. To link, go to your project settings, select `Build Phases`, find the section `Link Binary With Libraries`, click the `+` button, select `libCancerBaseSDK.a`, and click `Add`.
+
+## Complete Example
+
+The folder `platform/examples/react-native` contains a fully-configured react-native app (iOS and Android) that links to the cancerbase sdk located in `platform/sdk/react-native`. 
