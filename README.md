@@ -10,3 +10,10 @@ users, and CancerBase.
  - [Android Setup](Android-Setup.md)
  - [APIs](APIs.md)
 
+## SDK Developers
+
+The instructions above setup the CancerBase SDK from the built npm package.
+Developers working on the SDK will want to configure their project to build the
+SDK from source.  
+
+  - [Local Setup](local-setup.md)
