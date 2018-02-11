@@ -54,13 +54,20 @@ After installing the iOS SDK, you will need to perform these steps one time only
 
 2. Update `Info.plist`:
 
-    Add your OAuth2 `cbClientId` and `cbClientSecret` to `Info.plist` and register your URL scheme, which is your `cbClientId` prefixed with the letters `cb`.  You may use Xcode's plist editor or right click `Info.plist` and choose `Open As --> Source Code`.
+    Using the XCode plist editor:
 
-    Given a `cbClientId` of `123456` and a secret of `abcdef`, the plist editor should look something like this after modifications:
+    1. Add your OAuth2 `cbClientId` and `cbClientSecret` to `Info.plist` as top-level strings.
+    1. Add a URL scheme, which is your `cbClientId` prefixed with the letters `cb`.
+   
+       To do this, add a row for `URL types`.  Change `Item 0` to `URL Schemes`.  Then set the `Item 0` under `URL Schemes` to the string `cb[CLIENT_ID]` replacing `[CLIENT_ID]` with your client id.
+    
+    Alternatively, you may edit the plist file directly as code.  Right click `Info.plist` and select `Open As --> Source Code`.
+
+    Given a `cbClientId` of `123456` and a `cbClientSecret` of `abcdef`, the plist editor will look like this after these modifications:
 
     ![Xcode view of updated Info.plist](https://user-images.githubusercontent.com/143985/28490013-649fdfc6-6e85-11e7-8254-e4cb34456763.png)
 
-    and the source code view should look something like this:
+    and the source code view will look like this:
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
