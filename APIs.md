@@ -28,7 +28,7 @@ class MainScreen extends React.Component {
   render() {
     return (
       <LoginButton
-        scope={MY_APP_SCOPES}
+        scopes={MY_APP_SCOPES}
         onLogin={this.onLogin}
         onError={this.onError}
       />;
