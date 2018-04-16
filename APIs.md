@@ -37,6 +37,15 @@ class MainScreen extends React.Component {
 }
 ```
 
+ Additionally, you can provide a `button` prop to the  `<LoginButton />` to render your custom component.
+ ```javascript
+<LoginButton
+   scopes={MY_APP_SCOPES}
+   onLogin={this.onLogin}
+   onError={this.onError}
+   button={customButton}
+ />;
+ ```
 The CancerBase user object has the following structure:
 
 ```typescript
@@ -140,9 +149,10 @@ Your app must respond to the logout event and return the user to the login scree
 CancerBaseSDK.on(‘logout’, () => app.logoutAndReturnToSplashScreen());
 ```
 
-When logging out, you should clear all user data from the device.  You should
-only persist your app’s per-user data on your servers or using the UserData
-API (described later).
+When logging out, you should clear all user data from the device by calling the `clearData` method. Note that this method only clears data client-side, so be sure to navigate your application to the splash screen beforehand.
+```javascript
+CancerBaseSDK.user.clearData();
+```
 
 # Data APIs
 
@@ -155,16 +165,22 @@ Once the user is logged in, you can make the following requests:
 ### Profiles
 
 Profiles in CancerBase look like:
-
-*TODO*
 ```typescript
 type profileShape = {
+  userId: UUID,
   born : Date,
   initialDate : Date,
   metastasis : Boolean
   diseaseState : String,
   sex : String,
-  nickname : String
+  nickname : String,
+  location: String,
+  randomizeLocation: Boolean,
+  lat: Float,
+  long: Float,
+  about: String,
+  forSelf: Boolean,
+  shareLocation: Boolean
 };
 ```
 
@@ -184,6 +200,14 @@ Write a user's profile.
 ```typescript
 CancerBaseSDK.user.updateProfile(newProfileValues);
 ```
+
+Write a user's information (used to change first name, last name, email address, etc.)
+```javascript
+CancerBaseSDK.user.updateUser(newUserValues);
+// newUserValues must be a JSON object.
+```
+
+
 
 ### UserData
 
@@ -270,6 +294,7 @@ replace them.  CancerBase may rotate your service account id and secret at any
 time.
 
 # Timeline APIs
+The Timeline API a way to interact with the events associated with a user's profile. These may be created, edited, or deleted by any CancerBase application, as long as the user is authenticated. Note that permanent deletion of a user's events is __not__ currently supported.
 
 Get a timeline event by ID.
 
@@ -326,7 +351,7 @@ CancerBaseSDK.timeline.delete({
 ```
 
 Deleted timeline events can be restored (you can offer the user an undo
-button) as long as you still remember the `eventId`.
+button) as long as you still remember the `eventId`. This method accepts a string or an object containing a string `eventId`.
 
 ```typescript
 CancerBaseSDK.timeline.undelete({
